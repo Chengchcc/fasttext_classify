@@ -1,0 +1,6 @@
+model:
+  tmp_data_path: './model/tmp'
+  fasttext_model: './model/fasttext.bin'
+data:
+  es_port: 9200
+  es_host: "139.9.250.148"
