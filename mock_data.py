@@ -1,14 +1,14 @@
 import time
-from elasticsearch import Elasticsearch
 from elasticsearch import helpers
-
+from utils import connect_elasticserach
 file_path='./data/cooking.train'
 host="139.9.250.148"
 port=9200
-
+username="XXX"
+password="XXX"
 
 def gen():
-    es = Elasticsearch([{"host": host, "port": port}])
+    es = connect_elasticserach(host,port, username, password)
     actions = []
     with open(file_path, "r", encoding="utf-8") as f:
         i = 0

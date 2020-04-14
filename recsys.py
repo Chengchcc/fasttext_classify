@@ -17,9 +17,11 @@ def train_job():
     # data
     es_host = config["data"]["es_host"]
     es_port = config["data"]["es_port"]
+    es_password = config["data"]["es_password"]
+    es_username = config["data"]["es_username"]
     print("es: %s:%d" %(es_host, es_port))
 
-    es = connect_elasticserach(es_host, es_port)
+    es = connect_elasticserach(es_host, es_port, es_username, es_password)
 
     query_body = {
         "query": {"range": {

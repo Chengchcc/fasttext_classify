@@ -4,14 +4,14 @@ import logging
 
 def logger_factory():
     return logging.getLogger(__name__)
-    
+
 def load_yaml_confg(yaml_file):
     with open(yaml_file) as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     return config
 
-def connect_elasticserach(host, port):
-    conn = Elasticsearch([{"host": host, "port": port}])
+def connect_elasticserach(host, port, username, passowrd):
+    conn = Elasticsearch([{"host": host, "port": port}], http_auth=(username, passowrd))
     return conn
 
 
