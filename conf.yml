@@ -7,3 +7,4 @@ data:
   es_host: "139.9.250.148"
   es_username: "recsys_admin"
   es_password: "PLAT4life"
+  es_index: "recsys"

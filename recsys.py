@@ -26,6 +26,7 @@ def train_job():
     es_port = config["data"]["es_port"]
     es_password = config["data"]["es_password"]
     es_username = config["data"]["es_username"]
+    es_index = config["data"]["es_index"]
     print("es: %s:%d" %(es_host, es_port))
 
     es = connect_elasticserach(es_host, es_port, es_username, es_password)
@@ -46,7 +47,7 @@ def train_job():
         "size":10000
     }
 
-    res = es.search(body=query_body, index="recsys")
+    res = es.search(body=query_body, index=es_index)
     with open(train_data_path, 'wt') as ft, open(valid_data_path, 'wt') as fv:
         count = len(res['hits']['hits'])
 

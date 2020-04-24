@@ -24,11 +24,12 @@ async def get_predict(
 ):
     lables, _ = fast_model.predict(prepare_process(content), k=limit+1)
     lables = list(lables)
+    prefix_len = len("__label__")
     if '__label__null' in lables:
         lables.remove('__label__null')
     if len(lables) > limit:
         lables = lables[0: limit]
-    return lables
+    return [ label[prefix_len:] for label in lables]
 
 
 #  schedule train model

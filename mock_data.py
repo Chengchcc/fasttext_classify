@@ -1,14 +1,18 @@
 import time, re
 from elasticsearch import helpers
-from utils import connect_elasticserach
+from utils import connect_elasticserach, load_yaml_confg
 file_path='./data/cooking.train'
-host="139.9.250.148"
-port=9200
-username="recsys_admin"
-password="PLAT4life"
+
 
 def gen():
-    es = connect_elasticserach(host,port, username, password)
+    config = load_yaml_confg("./conf.yml")
+    # data
+    es_host = config["data"]["es_host"]
+    es_port = config["data"]["es_port"]
+    es_password = config["data"]["es_password"]
+    es_username = config["data"]["es_username"]
+    es_index = config["data"]["es_index"]
+    es = connect_elasticserach(es_host,es_port, es_username, es_password)
     actions = []
     with open(file_path, "r", encoding="utf-8") as f:
         i = 0
@@ -23,7 +27,7 @@ def gen():
                 else:
                     name += (" "+ buffer)
             action = {
-                "_index": "recsys",
+                "_index": es_index,
                 "_source": {
                     "desc": name,
                     "tags":list(label),
