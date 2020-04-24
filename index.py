@@ -37,8 +37,9 @@ scheduler = BackgroundScheduler()
 def train():
     logger.info('start train job')
     train_job()
+    global fast_model
+    fast_model=load_fasttext_model('model/fasttext.bin')
     logger.info('finish train job')
-
 try:
     scheduler.start()
 except (KeyboardInterrupt, SystemExit):
