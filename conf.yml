@@ -1,8 +1,9 @@
 model:
-  tmp_data_path: './model/tmp'
+  train_data_path: './model/tmp.train'
+  valid_data_path: './model/tmp.valid'
   fasttext_model: './model/fasttext.bin'
 data:
   es_port: 9200
   es_host: "139.9.250.148"
-  es_username: "XXX"
-  es_password: "XXX"
+  es_username: "recsys_admin"
+  es_password: "PLAT4life"
